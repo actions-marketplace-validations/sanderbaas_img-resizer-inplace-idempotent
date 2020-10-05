@@ -1,6 +1,6 @@
 # action.yml
-name: 'Image Resizer Inplace'
-description: 'In place resize images inside a folder'
+name: 'Image Resizer Inplace Idempotent'
+description: 'Resize images in place, keeping aspect ratio, but only when image width or height exceeds the given max width or height'
 branding:
   icon: 'image'  
   color: 'green'
@@ -9,10 +9,14 @@ inputs:
     description: 'Folder in which images are stored'
     required: true
     default: 'images'
-  dimensions:
-    description: 'New resolution for images'
+  width:
+    description: 'Max width for images'
     required: true
-    default: '500x'
+    default: 500
+  height:
+    description: 'Max height for images'
+    required: true
+    default: 9999
 outputs:
   time:
     description: 'The time we greeted you'
@@ -22,4 +26,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.target }}
-    - ${{ inputs.dimensions }}
+    - ${{ inputs.width }}
+    - ${{ inputs.height }}
