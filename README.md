@@ -1,4 +1,4 @@
-# img-resizer-inplace
+# img-resizer-inplace-idempotent
 
 A GitHub action to resize your images within the folder they are.
 
